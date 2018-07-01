@@ -5,9 +5,9 @@ package wavy.util.dsa;
  * 基于Java静态数组二次封装的动态数组类
  * Created by WavyPeng on 2018/7/1.
  */
-public class Array {
+public class Array<E> {
     /**基本数组 */
-    private int[] data;
+    private E[] data;
     /**元素个数 */
     private int size;
 
@@ -17,7 +17,6 @@ public class Array {
      */
     public Array(){
         this(10);
-        size = 0;
     }
 
     /**
@@ -25,7 +24,8 @@ public class Array {
      * @param capacity 数组容量
      */
     public Array(int capacity){
-       data = new int[capacity];
+        data = (E[])new Object[capacity];
+        size = 0;
     }
 
     /**
@@ -56,7 +56,7 @@ public class Array {
      * 向数组首部添加元素
      * @param e 添加的元素
      */
-    public void addFirst(int e){
+    public void addFirst(E e){
         add(0,e);
     }
 
@@ -64,7 +64,7 @@ public class Array {
      * 向数组末尾添加元素
      * @param e 添加的元素
      */
-    public void addLast(int e){
+    public void addLast(E e){
         add(size,e);
     }
 
@@ -73,13 +73,14 @@ public class Array {
      * @param index 指定索引
      * @param e 待插入元素
      */
-    public void add(int index, int e){
-        // 判断容量是否足够
-        if(size == data.length)
-            throw new IllegalArgumentException("Add failed. Array is full.");
+    public void add(int index, E e){
         // 判断索引是否合法
         if(index < 0 || index > size)
             throw new IllegalArgumentException("Add failed. Require index>=0 and index<=size.");
+
+        // 判断容量是否足够
+        if(size == data.length)
+            resize(2 * data.length);
 
         for(int i = size-1;i >= index;i--){
             data[i+1] = data[i];
@@ -93,7 +94,7 @@ public class Array {
      * @param index
      * @return
      */
-    public int get(int index){
+    public E get(int index){
         if(index < 0 || index >= size)
             throw new IllegalArgumentException("Get failed. Index is illegal.");
         return data[index];
@@ -103,7 +104,7 @@ public class Array {
      * 设置index处的元素
      * @param index
      */
-    public void set(int index, int e){
+    public void set(int index, E e){
         if(index < 0 || index >= size)
             throw new IllegalArgumentException("Set failed. Index is illegal.");
         data[index] = e;
@@ -114,9 +115,9 @@ public class Array {
      * @param e
      * @return
      */
-    public boolean contains(int e){
+    public boolean contains(E e){
         for(int i = 0;i < size;i++){
-            if(data[i] == e)
+            if(data[i].equals(e))
                 return true;
         }
         return false;
@@ -128,12 +129,59 @@ public class Array {
      * @param e
      * @return
      */
-    public int find(int e){
+    public int find(E e){
         for(int i = 0;i < size;i++){
-            if(data[i] == e)
+            if(data[i].equals(e))
                 return i;
         }
         return -1;
+    }
+
+    /**
+     * 删除索引位置的元素并返回删除的元素
+     * @param index
+     * @return
+     */
+    public E remove(int index){
+        if(index < 0 || index >= size)
+            throw new IllegalArgumentException("Remove failed. Index is illegal.");
+        E ret = data[index];
+        for(int i=index+1;i<size;i++){
+            data[i-1]=data[i];
+        }
+        size--;
+        data[size] = null; // loitering objects != memory leak
+
+        // 缩容，当size==capacity/4时才触发缩容
+        if(size == data.length >> 2 && data.length >> 1 != 0)
+            resize(data.length >> 1);
+
+        return ret;
+    }
+
+    /**
+     * 删除数组首部元素
+     * @return
+     */
+    public E removeFirst(){
+        return remove(0);
+    }
+
+    /**
+     * 删除数组末尾元素
+     * @return
+     */
+    public E removeLast(){
+        return remove(size-1);
+    }
+
+    /**
+     * 删除数组中的元素e
+     */
+    public void removeElement(E e){
+        int index = find(e);
+        if(index != -1)
+            remove(index);
     }
 
     /**
@@ -153,5 +201,16 @@ public class Array {
         }
         res.append("]");
         return res.toString();
+    }
+
+    /**
+     * 动态扩容
+     * @param newCapacity
+     */
+    private void resize(int newCapacity){
+        E[] newData = (E[])new Object[newCapacity];
+        for(int i = 0;i < size;i++)
+            newData[i] = data[i];
+        data = newData;
     }
 }
