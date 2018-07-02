@@ -101,6 +101,22 @@ public class Array<E> {
     }
 
     /**
+     * 获取数组末尾元素
+     * @return
+     */
+    public E getLast(){
+        return get(size - 1);
+    }
+
+    /**
+     * 获取数组首部元素
+     * @return
+     */
+    public E getFirst(){
+        return get(0);
+    }
+
+    /**
      * 设置index处的元素
      * @param index
      */
