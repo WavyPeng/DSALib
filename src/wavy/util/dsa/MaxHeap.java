@@ -8,6 +8,13 @@ public class MaxHeap<E extends Comparable<E>> {
     private Array<E> data;
 
     /**
+     * 默认构造器
+     */
+    public MaxHeap(){
+        data = new Array<E>();
+    }
+
+    /**
      * 构造器
      * @param capacity 容量
      */
@@ -16,10 +23,14 @@ public class MaxHeap<E extends Comparable<E>> {
     }
 
     /**
-     * 默认构造器
+     * 构造器
+     * 将数组heapify
+     * @param arr
      */
-    public MaxHeap(){
-        data = new Array<E>();
+    public MaxHeap(E[] arr){
+        data = new Array<E>(arr);
+        for(int i = parent(arr.length-1);i>=0;i--)
+            siftDown(i);
     }
 
     /**
@@ -72,6 +83,18 @@ public class MaxHeap<E extends Comparable<E>> {
         // 3.调整堆
         siftDown(0);
 
+        return ret;
+    }
+
+    /**
+     * 替换堆中最大元素
+     * @param e
+     * @return
+     */
+    public E replace(E e){
+        E ret = findMax();
+        data.set(0,e);
+        siftDown(0);
         return ret;
     }
 
