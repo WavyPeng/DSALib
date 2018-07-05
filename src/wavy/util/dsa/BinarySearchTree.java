@@ -142,6 +142,8 @@ public class BinarySearchTree<E extends Comparable<E>> {
         System.out.println(node.e);
     }
 
+
+
     /**
      * 将二叉搜索树转换成字符串格式输出
      * 按前序遍历格式输出
