@@ -186,6 +186,52 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     /**
+     * 寻找最小元素
+     * @return
+     */
+    public E minimum(){
+        if(size == 0)
+            throw new IllegalArgumentException("BST is empty");
+        Node minNode = minimum(root);
+        return minNode.e;
+    }
+
+    /**
+     * 返回以node为根的二分搜索树的最小值所在的节点
+     * @param node
+     * @return
+     */
+    private Node minimum(Node node){
+        if( node.left == null )
+            return node;
+
+        return minimum(node.left);
+    }
+
+    /**
+     * 寻找最大元素
+     * @return
+     */
+    public E maximum(){
+        if(size == 0)
+            throw new IllegalArgumentException("BST is empty");
+        Node maxNode = maximum(root);
+        return maxNode.e;
+    }
+
+    /**
+     * 返回以node为根的二分搜索树的最大值所在的节点
+     * @param node
+     * @return
+     */
+    private Node maximum(Node node){
+        if( node.right == null )
+            return node;
+
+        return maximum(node.right);
+    }
+
+    /**
      * 将二叉搜索树转换成字符串格式输出
      * 按前序遍历格式输出
      * @return
