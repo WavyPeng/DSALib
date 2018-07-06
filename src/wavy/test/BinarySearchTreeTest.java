@@ -20,15 +20,18 @@ public class BinarySearchTreeTest {
         //  / \    \   //
         // 2  4     8  //
         /////////////////
-        bst.preOrder();
-        System.out.println();
 
-        bst.inOrder();
-        System.out.println();
+        bst.levelOrder();
 
-        bst.postOrder();
-        System.out.println();
-
-        System.out.println(bst);
+//        bst.preOrder();
+//        System.out.println();
+//
+//        bst.inOrder();
+//        System.out.println();
+//
+//        bst.postOrder();
+//        System.out.println();
+//
+//        System.out.println(bst);
     }
 }

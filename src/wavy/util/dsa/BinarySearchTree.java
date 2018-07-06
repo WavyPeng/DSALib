@@ -165,7 +165,25 @@ public class BinarySearchTree<E extends Comparable<E>> {
         }
     }
 
+    /**
+     * 层序遍历
+     */
+    public void levelOrder(){
+        if(root == null)
+            return;
 
+        LoopQueue<Node> queue = new LoopQueue<>();
+        queue.enqueue(root);
+
+        while (!queue.isEmpty()){
+            Node cur = queue.dequeue();
+            System.out.println(cur.e);
+            if(cur.left != null)
+                queue.enqueue(cur.left);
+            if(cur.right != null)
+                queue.enqueue(cur.right);
+        }
+    }
 
     /**
      * 将二叉搜索树转换成字符串格式输出
