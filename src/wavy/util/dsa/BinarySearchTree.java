@@ -1,5 +1,7 @@
 package wavy.util.dsa;
 
+import java.util.*;
+
 /**
  * 二分搜索树（不包含重复元素）
  * Created by WavyPeng on 2018/7/5.
@@ -95,7 +97,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     /**
-     * 前序遍历
+     * 前序遍历（递归实现）
      */
     public void preOrder(){
         preOrder(root);
@@ -140,6 +142,27 @@ public class BinarySearchTree<E extends Comparable<E>> {
         postOrder(node.left);
         postOrder(node.right);
         System.out.println(node.e);
+    }
+
+    /**
+     * 前序遍历（非递归实现）
+     */
+    public void preOrderNR(){
+        if(root == null)
+            return;
+
+        ArrayStack<Node> stack = new ArrayStack<>();
+        // 1.将根节点压栈
+        stack.push(root);
+        while (!stack.isEmpty()){
+            Node cur = stack.pop();
+            System.out.println(cur.e);
+
+            if(cur.right != null)
+                stack.push(cur.right);
+            if(cur.left != null)
+                stack.push(cur.left);
+        }
     }
 
 
