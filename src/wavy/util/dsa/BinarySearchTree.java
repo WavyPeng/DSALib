@@ -232,6 +232,114 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     /**
+     * 从二分搜索树中删除最小值所在节点, 返回最小值
+     * @return
+     */
+    public E removeMin(){
+        E ret = minimum();
+        root = removeMin(root);
+        return ret;
+    }
+
+    /**
+     * 删除掉以node为根的二分搜索树中的最小节点
+     * 返回删除节点后新的二分搜索树的根
+     * @param node
+     * @return
+     */
+    private Node removeMin(Node node){
+        if(node.left == null){
+            Node rightNode = node.right;
+            node.right = null; // 将当前节点从二叉树中脱离
+            size--;
+            return rightNode;
+        }
+        node.left = removeMin(node.left);
+        return node;
+    }
+
+    /**
+     * 从二分搜索树中删除最大值所在节点, 返回最大值
+     * @return
+     */
+    public E removeMax(){
+        E ret = maximum();
+        root = removeMax(root);
+        return ret;
+    }
+
+    /**
+     * 删除掉以node为根的二分搜索树中的最大节点
+     * 返回删除节点后新的二分搜索树的根
+     * @param node
+     * @return
+     */
+    private Node removeMax(Node node){
+        if(node.right == null){
+            Node leftNode = node.left;
+            node.left = null;
+            size--;
+            return leftNode;
+        }
+        node.right = removeMin(node.right);
+        return node;
+    }
+
+    /**
+     * 删除二分搜索树指定节点
+     * @param e
+     */
+    public void remove(E e){
+        root = remove(root,e);
+    }
+
+    /**
+     * 基于Hibbard Deletion算法
+     * 删除掉以node为根的二分搜索树中值为e的节点
+     * 返回删除节点后新的二分搜索树的根
+     * @param node
+     * @param e
+     * @return
+     */
+    private Node remove(Node node, E e){
+        if(node == null)
+            return null;
+        if(e.compareTo(node.e) < 0){  // 目标比当前节点小，向左找
+            node.left = remove(node.left,e);
+            return node;
+        }else if(e.compareTo(node.e) > 0){ // 目标比当前节点大，向右找
+            node.right = remove(node.right,e);
+            return node;
+        }else { // 找到目标节点
+            // 1.待删除节点左子树为空的情况，同删除最小值情况
+            if(node.left == null){
+                Node rightNode = node.right;
+                node.right = null;
+                size--;
+                return rightNode;
+            }
+
+            // 2.待删除节点右子树为空的情况，同删除最大值情况
+            if(node.right == null){
+                Node leftNode = node.left;
+                node.left = null;
+                size--;
+                return leftNode;
+            }
+
+            // 3.待删除节点左右子树均不为空的情况
+            // 找到比待删除节点大的最小节点, 即待删除节点右子树的最小节点
+            // 用这个节点顶替待删除节点的位置
+            Node successor = minimum(node.right);
+            successor.right = removeMin(node.right);
+            successor.left = node.left;
+
+            node.left = node.right = null; // 将目标节点删去
+            return successor;
+        }
+    }
+
+    /**
      * 将二叉搜索树转换成字符串格式输出
      * 按前序遍历格式输出
      * @return
