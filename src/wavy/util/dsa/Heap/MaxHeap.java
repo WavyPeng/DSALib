@@ -1,4 +1,6 @@
-package wavy.util.dsa;
+package wavy.util.dsa.Heap;
+
+import wavy.util.dsa.Array.Array;
 
 /**
  * 大顶堆

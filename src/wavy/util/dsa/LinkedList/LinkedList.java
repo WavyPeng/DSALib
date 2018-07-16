@@ -1,4 +1,4 @@
-package wavy.util.dsa;
+package wavy.util.dsa.LinkedList;
 /**
  * 链表
  * Created by WavyPeng on 2018/7/10.

@@ -1,4 +1,4 @@
-package wavy.util.dsa;
+package wavy.util.dsa.Queue;
 /**
  * 队列接口
  * Created by WavyPeng on 2018/7/2.

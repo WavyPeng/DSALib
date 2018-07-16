@@ -1,6 +1,6 @@
 package wavy.test;
 
-import wavy.util.dsa.LinkedList;
+import wavy.util.dsa.LinkedList.LinkedList;
 
 /**
  * 链表测试类

@@ -1,4 +1,7 @@
-package wavy.util.dsa;
+package wavy.util.dsa.Set;
+
+import wavy.util.dsa.LinkedList.LinkedList;
+
 /**
  * 集合实现，基于链表
  * Created by WavyPeng on 2018/7/16.

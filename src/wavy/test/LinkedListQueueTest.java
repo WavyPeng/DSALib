@@ -1,6 +1,6 @@
 package wavy.test;
 
-import wavy.util.dsa.LinkedListQueue;
+import wavy.util.dsa.Queue.LinkedListQueue;
 /**
  * 基于链表实现的队列的测试类
  * Created by WavyPeng on 2018/7/10.

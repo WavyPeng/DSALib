@@ -1,6 +1,6 @@
 package wavy.test;
 
-import wavy.util.dsa.BinarySearchTree;
+import wavy.util.dsa.Tree.BinarySearchTree;
 
 import java.util.ArrayList;
 import java.util.Random;

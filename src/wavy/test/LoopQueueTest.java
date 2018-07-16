@@ -1,6 +1,6 @@
 package wavy.test;
 
-import wavy.util.dsa.LoopQueue;
+import wavy.util.dsa.Queue.LoopQueue;
 
 /**
  * LoopQueue测试类

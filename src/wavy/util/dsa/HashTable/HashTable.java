@@ -1,4 +1,4 @@
-package wavy.util.dsa;
+package wavy.util.dsa.HashTable;
 
 import java.util.TreeMap;
 

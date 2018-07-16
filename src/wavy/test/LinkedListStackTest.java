@@ -1,6 +1,6 @@
 package wavy.test;
 
-import wavy.util.dsa.LinkedListStack;
+import wavy.util.dsa.Stack.LinkedListStack;
 
 /**
  * 基于链表实现的栈的测试类

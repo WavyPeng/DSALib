@@ -1,32 +1,34 @@
-package wavy.util.dsa;
+package wavy.util.dsa.Queue;
+
+import wavy.util.dsa.Array.Array;
 
 /**
- * ArrayStack
- * 基于Array动态数组实现的栈
+ * ArrayQueue
+ * 基于Array动态数组实现的队列
  * @param <E>
  * Created by WavyPeng on 2018/7/2.
  */
-public class ArrayStack<E> implements Stack<E> {
+public class ArrayQueue<E> implements Queue<E> {
 
     private Array<E> array;
 
     /**
      * 构造器
-     * @param capacity 栈容量
+     * @param capacity
      */
-    public ArrayStack(int capacity) {
-        array = new Array<E>(capacity);
+    public ArrayQueue(int capacity){
+        array = new Array<>(capacity);
     }
 
     /**
      * 默认构造器
      */
-    public ArrayStack() {
-        array = new Array<E>();
+    public ArrayQueue(){
+        array = new Array<>();
     }
 
     /**
-     * 获取栈容量
+     * 获取队列容量
      * @return
      */
     public int getCapacity(){
@@ -34,18 +36,18 @@ public class ArrayStack<E> implements Stack<E> {
     }
 
     @Override
-    public void push(E e) {
+    public void enqueue(E e) {
         array.addLast(e);
     }
 
     @Override
-    public E pop() {
-        return array.removeLast();
+    public E dequeue() {
+        return array.removeFirst();
     }
 
     @Override
-    public E peek() {
-        return array.getLast();
+    public E getFront() {
+        return array.getFirst();
     }
 
     @Override
@@ -59,20 +61,20 @@ public class ArrayStack<E> implements Stack<E> {
     }
 
     /**
-     * 将栈转换成字符输出
+     * 将队列转换成字符串格式输出
      * @return
      */
     @Override
     public String toString() {
         StringBuilder ret = new StringBuilder();
-        ret.append("Stack: ");
-        ret.append("[");
-        for(int i=0;i<array.getSize();i++){
+        ret.append("Queue: ");
+        ret.append("front [");
+        for(int i = 0 ; i < array.getSize() ; i ++){
             ret.append(array.get(i));
-            if(i!=array.getSize()-1)
+            if(i != array.getSize() - 1)
                 ret.append(", ");
         }
-        ret.append("] top");
+        ret.append("] tail");
         return ret.toString();
     }
 }

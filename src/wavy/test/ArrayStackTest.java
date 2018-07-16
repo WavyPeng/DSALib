@@ -1,6 +1,6 @@
 package wavy.test;
 
-import wavy.util.dsa.ArrayStack;
+import wavy.util.dsa.Stack.Stack.ArrayStack;
 
 /**
  * ArrayStack测试类

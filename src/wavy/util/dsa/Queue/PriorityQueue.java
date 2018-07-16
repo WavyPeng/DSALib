@@ -1,4 +1,6 @@
-package wavy.util.dsa;
+package wavy.util.dsa.Queue;
+
+import wavy.util.dsa.Heap.MaxHeap;
 
 /**
  * PriorityQueue

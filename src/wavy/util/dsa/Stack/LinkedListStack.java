@@ -1,4 +1,6 @@
-package wavy.util.dsa;
+package wavy.util.dsa.Stack;
+
+import wavy.util.dsa.LinkedList.LinkedList;
 
 /**
  * 基于LinkedList实现Stack

@@ -1,4 +1,4 @@
-package wavy.util.dsa;
+package wavy.util.dsa.Stack;
 
 /**
  * 栈接口

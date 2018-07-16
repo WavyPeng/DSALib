@@ -1,10 +1,13 @@
-package wavy.util.dsa;
+package wavy.util.dsa.Set;
+
+import wavy.util.dsa.Tree.BinarySearchTree;
+
 /**
  * 集合实现
  * 基于二分搜索树
  * Created by WavyPeng on 2018/7/16.
  */
-public class BSTSet<E extends Comparable<E>> implements Set<E>{
+public class BSTSet<E extends Comparable<E>> implements Set<E> {
 
     private BinarySearchTree<E> bst;
 

@@ -1,10 +1,10 @@
-package wavy.util.dsa;
+package wavy.util.dsa.Queue;
 
 /**
  * 循环队列
  * Created by WavyPeng on 2018/7/2.
  */
-public class LoopQueue<E> implements Queue<E>{
+public class LoopQueue<E> implements Queue<E> {
 
     /**基本数组 */
     private E[] data;

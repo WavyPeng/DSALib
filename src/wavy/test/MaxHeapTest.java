@@ -1,6 +1,6 @@
 package wavy.test;
 
-import wavy.util.dsa.MaxHeap;
+import wavy.util.dsa.Heap.MaxHeap;
 
 import java.util.Random;
 

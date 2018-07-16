@@ -1,4 +1,5 @@
-package wavy.util.dsa;
+package wavy.util.dsa.Queue;
+
 /**
  * 基于LinkedList实现Queue
  * Created by WavyPeng on 2018/7/10.
