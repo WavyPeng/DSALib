@@ -1,3 +1,6 @@
+#### 说明
+主要实现一些常见常用的数据结构，具体内容请见目录。
+
 #### 开发环境
 - IntelliJ IDEA 15.0.6
 - JDK1.8
@@ -17,7 +20,7 @@
 | 3.2 ArrayQueue | 基于动态数组实现的队列 | [Java](https://github.com/WavyPeng/DSALib/blob/master/src/wavy/util/dsa/Queue/ArrayQueue.java) |
 | 3.3 LinkedListQueue | 基于链表实现的队列 | [Java](https://github.com/WavyPeng/DSALib/blob/master/src/wavy/util/dsa/Queue/LinkedListQueue.java) |
 | 3.4 LoopQueue | 循环队列 | [Java](https://github.com/WavyPeng/DSALib/blob/master/src/wavy/util/dsa/Queue/LoopQueue.java) |
-| 3.5 PriorityQueue | 优先队列 | [Java](https://github.com/WavyPeng/DSALib/blob/master/src/wavy/util/dsa/Queue/PriorityQueue.java) |
+| 3.5 PriorityQueue | 优先队列（基于大顶堆） | [Java](https://github.com/WavyPeng/DSALib/blob/master/src/wavy/util/dsa/Queue/PriorityQueue.java) |
 | 四、链表 |
 | 4.1 LinkedList | 链表 | [Java](https://github.com/WavyPeng/DSALib/blob/master/src/wavy/util/dsa/LinkedList/LinkedList.java) |
 | 五、树 |
