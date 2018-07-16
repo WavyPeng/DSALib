@@ -1,6 +1,6 @@
 package wavy.test;
 
-import wavy.util.dsa.Queue.Queue.ArrayQueue;
+import wavy.util.dsa.Queue.ArrayQueue;
 
 /**
  * ArrayQueue测试类

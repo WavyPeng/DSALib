@@ -1,6 +1,6 @@
 package wavy.applications.Stack.valid_parentheses;
 
-import wavy.util.dsa.Stack.Stack.ArrayStack;
+import wavy.util.dsa.Stack.ArrayStack;
 
 /**
  * 括号匹配
