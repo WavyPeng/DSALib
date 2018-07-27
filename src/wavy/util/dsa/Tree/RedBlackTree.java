@@ -60,4 +60,63 @@ public class RedBlackTree<K extends Comparable<K>,V> {
             return BLACK;
         return node.color;
     }
+
+    /**
+     * 左旋
+     * @param node
+     * @return
+     *
+     *     node                 x
+     *    /    \              /   \
+     *   T1     x     ----> node  T3
+     *        /  \         /    \
+     *       T2  T3       T1    T2
+     */
+    private Node leftRotate(Node node){
+        Node x = node.right;
+
+        // 左旋
+        node.right = x.left;
+        x.left = node;
+
+        x.color = node.color;
+        node.color = RED;
+
+        return x;
+    }
+
+    /**
+     * 向红黑树中添加元素
+     * @param key
+     * @param value
+     */
+    public void add(K key, V value){
+        root = add(root,key,value);
+        // 将根节点设置为黑色
+        root.color = BLACK;
+    }
+
+    /**
+     * 向以node为根的红黑树中插入元素
+     * 返回插入新节点后红黑树的根
+     * @param node
+     * @param key
+     * @param value
+     * @return
+     */
+    private Node add(Node node,K key, V value){
+        if(node == null){
+            size++;
+            return new Node(key,value);
+        }
+
+        if(key.compareTo(node.key)<0)
+            node.left = add(node.left,key,value);
+        else if(key.compareTo(node.key)>0)
+            node.right = add(node.right,key,value);
+        else
+            node.value = value;
+
+        return node;
+    }
 }
