@@ -27,7 +27,7 @@
 | 5.1 BinarySearchTree | 二分搜索树 | [Java](https://github.com/WavyPeng/DSALib/blob/master/src/wavy/util/dsa/Tree/BinarySearchTree.java) |
 | 5.2 线段树 |  | 待完成 |
 | 5.3 AVL |  | 待完成 |
-| 5.4 红黑树 |  | 待完成 |
+| 5.4 红黑树 |  | [Java](https://github.com/WavyPeng/DSALib/blob/master/src/wavy/util/dsa/Tree/RedBlackTree.java) |
 | 六、集合与映射|
 | 6.1 Set | set接口 | [Java](https://github.com/WavyPeng/DSALib/blob/master/src/wavy/util/dsa/Set/Set.java) |
 | 6.2 LinkedListSet | 基于链表实现的set | [Java](https://github.com/WavyPeng/DSALib/blob/master/src/wavy/util/dsa/Set/LinkedListSet.java) |
