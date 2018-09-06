@@ -94,7 +94,47 @@ public class SegmentTree<E> {
         return merger.merge(leftResult,rightResult);
     }
 
+    /**
+     * 将index位置的值更新为e
+     * @param index
+     * @param e
+     */
+    public void set(int index, E e){
+        if(index < 0 || index >= data.length)
+            throw new IllegalArgumentException("Index is illegal");
+        data[index] = e;
+        set(0,0,data.length-1,index,e);
+    }
 
+    /**
+     * 在以treeIndex为根的线段树中更新index的值为e
+     * 时间复杂度O(logn)
+     * @param treeIndex
+     * @param l
+     * @param r
+     * @param index
+     * @param e
+     */
+    private void set(int treeIndex,int l,int r,int index,E e){
+        if(l == r){
+            tree[treeIndex] = e;
+            return;
+        }
+
+        int mid = l + (r - l)/2;
+        int leftTreeIndex = leftChild(treeIndex);
+        int rightTreeIndex = rightChild(treeIndex);
+
+        // 类比二分搜索树的更新过程
+        if(index >= mid + 1)
+            set(rightTreeIndex,mid+1,r,index,e);
+        else
+            set(leftTreeIndex,l,mid,index,e);
+
+        // 由于更新后上面节点的值也会发生改变，
+        // 因此需要重新进行merge操作
+        tree[treeIndex] = merger.merge(tree[leftTreeIndex],tree[rightTreeIndex]);
+    }
 
     /**
      * 获取元素个数
