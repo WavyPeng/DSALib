@@ -25,7 +25,7 @@
 | 4.1 LinkedList | 链表 | [Java](https://github.com/WavyPeng/DSALib/blob/master/src/wavy/util/dsa/LinkedList/LinkedList.java) |
 | 五、树 |
 | 5.1 BinarySearchTree | 二分搜索树 | [Java](https://github.com/WavyPeng/DSALib/blob/master/src/wavy/util/dsa/Tree/BinarySearchTree.java) |
-| 5.2 线段树 |  | 待完成 |
+| 5.2 线段树 |  | [Java](https://github.com/WavyPeng/DSALib/blob/master/src/wavy/util/dsa/Tree/SegmentTree.java) |
 | 5.3 AVL |  | 待完成 |
 | 5.4 红黑树 |  | [Java](https://github.com/WavyPeng/DSALib/blob/master/src/wavy/util/dsa/Tree/RedBlackTree.java) |
 | 六、集合与映射|
