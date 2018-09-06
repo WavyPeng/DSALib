@@ -1,7 +1,5 @@
 package wavy.util.dsa.Tree;
 
-import java.util.Arrays;
-
 /**
  * 线段树
  * Created by WavyPeng on 2018/09/05.
@@ -53,6 +51,47 @@ public class SegmentTree<E> {
         // 每个节点的值受业务逻辑影响（求和？最大值？最小值？）
         // 这里采用融合器来实现
         tree[treeIndex] = merger.merge(tree[leftTreeIndex],tree[rightTreeIndex]);
+    }
+
+
+    /**
+     * 返回区间[queryL,queryR]的值
+     * @param queryL
+     * @param queryR
+     * @return
+     */
+    public E query(int queryL, int queryR){
+        if(queryL < 0 || queryR >= data.length ||
+                queryR < 0 || queryR >= data.length || queryL > queryR)
+            throw new IllegalArgumentException("Index is illegal.");
+        return query(0,0,data.length-1,queryL,queryR);
+    }
+
+    /**
+     * 在以treeIndex为根的线段树中[l...r]的范围内，搜索区间[queryL,queryR]的值
+     * @param treeIndex 线段树根的index
+     * @param l         线段树左范围
+     * @param r         线段树右范围
+     * @param queryL    搜索区间左范围
+     * @param queryR    搜索区间右范围
+     * @return
+     */
+    private E query(int treeIndex,int l,int r,int queryL,int queryR){
+        if(l == queryL && r == queryR)
+            return tree[treeIndex];
+        int mid = l+(r-l)/2;
+        int leftTreeIndex = leftChild(treeIndex);
+        int rightTreeIndex = rightChild(treeIndex);
+
+        if(queryL >= mid + 1)
+            return query(rightTreeIndex,mid+1,r,queryL,queryR);
+        else if(queryR <= mid)
+            return query(leftTreeIndex,l,mid,queryL,queryR);
+
+        E leftResult = query(leftTreeIndex,l,mid,queryL,mid);
+        E rightResult = query(rightTreeIndex,mid+1,r,mid+1,queryR);
+
+        return merger.merge(leftResult,rightResult);
     }
 
     /**
