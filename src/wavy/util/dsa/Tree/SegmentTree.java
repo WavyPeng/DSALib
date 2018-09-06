@@ -94,6 +94,8 @@ public class SegmentTree<E> {
         return merger.merge(leftResult,rightResult);
     }
 
+
+
     /**
      * 获取元素个数
      * @return
